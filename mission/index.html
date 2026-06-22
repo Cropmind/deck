@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CropMind — Our Mission</title>
+  <meta name="description" content="Why CropMind exists. The founding story, the people, and what we are building for the next generation of farmers.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #060e09;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(6, 14, 9, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(119, 191, 89, 0.12);
+    }
+    .nav-logo {
+      font-size: 13px; font-weight: 800; letter-spacing: 0.2em;
+      color: #77bf59; text-decoration: none; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none;
+      letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #77bf59; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.25em;
+      color: #77bf59; text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -2px; color: #fff;
+      margin-bottom: 32px;
+    }
+    .hero-headline .green { color: #77bf59; }
+    .hero-sub {
+      font-size: 20px; color: rgba(255,255,255,0.55);
+      max-width: 580px; line-height: 1.65; margin-bottom: 48px;
+    }
+    .hero-bar { width: 56px; height: 4px; background: #77bf59; border-radius: 2px; margin-bottom: 28px; }
+    .hero-contact {
+      font-size: 13px; color: rgba(255,255,255,0.4);
+      line-height: 2; letter-spacing: 0.02em;
+    }
+    .hero-contact a { color: #77bf59; text-decoration: none; }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 780px; margin: 0 auto;
+      padding: 100px 48px;
+      border-top: 1px solid rgba(119, 191, 89, 0.1);
+    }
+    .section-kicker {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+      color: #77bf59; text-transform: uppercase; margin-bottom: 20px;
+    }
+    h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900; letter-spacing: -1px; line-height: 1.15;
+      color: #fff; margin-bottom: 32px;
+    }
+    h2 .green { color: #77bf59; }
+    p {
+      font-size: 17px; color: rgba(255,255,255,0.65);
+      margin-bottom: 20px; line-height: 1.8;
+    }
+    p strong { color: #fff; font-weight: 700; }
+    p em { color: rgba(255,255,255,0.85); font-style: italic; }
+
+    /* ── PULL QUOTE ── */
+    .pull {
+      border-left: 3px solid #77bf59;
+      padding: 20px 28px;
+      margin: 36px 0;
+      background: rgba(119, 191, 89, 0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull p {
+      font-size: 20px; font-weight: 700; color: #fff;
+      margin: 0; line-height: 1.5;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: flex; gap: 0; margin: 40px 0;
+      border: 1px solid rgba(119,191,89,0.2); border-radius: 12px;
+      overflow: hidden;
+    }
+    .stat-item {
+      flex: 1; padding: 28px 24px; text-align: center;
+      border-right: 1px solid rgba(119,191,89,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 44px; font-weight: 900; color: #77bf59;
+      line-height: 1; letter-spacing: -2px; margin-bottom: 8px;
+    }
+    .stat-lbl {
+      font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4);
+      text-transform: uppercase; letter-spacing: 0.15em;
+    }
+
+    /* ── PROFILE CARDS ── */
+    .profiles { display: flex; gap: 20px; margin: 40px 0; }
+    .profile {
+      flex: 1; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(119,191,89,0.18);
+      border-radius: 12px; padding: 28px 24px;
+    }
+    .profile-initial {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #77bf59; color: #060e09;
+      font-size: 22px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .profile-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .profile-title {
+      font-size: 10px; font-weight: 700; color: #77bf59;
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
+    }
+    .profile-bio { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
+
+    /* ── MISSION STATEMENT ── */
+    .mission-block {
+      margin: 60px 0 0;
+      padding: 56px 48px;
+      background: rgba(119,191,89,0.06);
+      border: 1px solid rgba(119,191,89,0.2);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .mission-line {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 800; color: #fff;
+      line-height: 1.5; margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .mission-line.green { color: #77bf59; }
+    .mission-line:last-of-type { margin-bottom: 0; }
+
+    /* ── ARC SECTION ── */
+    .arc-section {
+      max-width: 780px; margin: 0 auto;
+      padding: 100px 48px 160px;
+      border-top: 1px solid rgba(119, 191, 89, 0.1);
+      text-align: center;
+    }
+    .arc-year {
+      font-size: 80px; font-weight: 900; color: rgba(119,191,89,0.15);
+      letter-spacing: -4px; line-height: 1; margin-bottom: -20px;
+    }
+    .arc-event { font-size: 14px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 48px; }
+    .arc-divider { width: 1px; height: 60px; background: rgba(119,191,89,0.3); margin: 0 auto 48px; }
+    .arc-closing {
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 900; color: #fff;
+      line-height: 1.2; letter-spacing: -1px; margin-bottom: 16px;
+    }
+    .arc-closing .green { color: #77bf59; }
+    .arc-sub { font-size: 16px; color: rgba(255,255,255,0.4); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(119,191,89,0.1);
+      padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { font-size: 11px; font-weight: 800; letter-spacing: 0.2em; color: #77bf59; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-links a:hover { color: #77bf59; }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero, section, .arc-section { padding-left: 24px; padding-right: 24px; }
+      .profiles { flex-direction: column; }
+      .stat-row { flex-wrap: wrap; }
+      .stat-item { flex: 0 0 50%; border-bottom: 1px solid rgba(119,191,89,0.15); }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-links { flex-direction: column; gap: 12px; }
+      .mission-block { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://cropmind.ca" class="nav-logo">CropMind</a>
+  <div class="nav-links">
+    <a href="https://cropmind.ca/deck">Pitch Deck</a>
+    <a href="https://cropmind.ca">Platform</a>
+    <a href="mailto:dodumosu@cropmind.ca">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-kicker">CropMind Inc. · Founded 2022</div>
+  <h1 class="hero-headline">
+    We exist so the<br>next generation<br>of farmers does not<br>have to <span class="green">guess.</span>
+  </h1>
+  <p class="hero-sub">
+    Precision intelligence for specialty agriculture. Built by farmers, engineers, and people who refused to stop when it would have been easier to.
+  </p>
+  <div class="hero-bar"></div>
+  <div class="hero-contact">
+    Damilare Odumosu · Founder &amp; CEO<br>
+    <a href="mailto:dodumosu@cropmind.ca">dodumosu@cropmind.ca</a> · <a href="https://cropmind.ca">cropmind.ca</a>
+  </div>
+</div>
+
+<!-- THE WRIGHT BROTHERS -->
+<section>
+  <div class="section-kicker">Why the Wright Brothers</div>
+  <h2>Their breakthrough was not <span class="green">lift.</span><br>It was control.</h2>
+  <p>
+    The Wright Brothers did not set out to start an airline. They set out to solve a problem that everyone said was unsolvable — and they did it in a bicycle shop in Dayton, Ohio, with no university lab, no government funding, and no permission from anyone.
+  </p>
+  <p>
+    On December 17, 1903, in a cold field in Kitty Hawk, Orville flew for 12 seconds. Twelve seconds that changed what humanity believed was possible.
+  </p>
+  <p>
+    But here is the part people forget: their real breakthrough was not getting off the ground. It was the three-axis control system — the ability to <em>steer</em>. To not just lift, but to go somewhere deliberate.
+  </p>
+  <div class="pull">
+    <p>That is what we are building. Not detection. Control. Farmers making decisions instead of guessing.</p>
+  </div>
+</section>
+
+<!-- THE MOMENT -->
+<section>
+  <div class="section-kicker">The Moment · Early 2026</div>
+  <h2>We found out who we were<br>because we <span class="green">lost the team.</span></h2>
+  <p>
+    In early 2026, CropMind's engineering team contracted to two — the founders. There was no announcement. No drama. People moved on, the way people do. It would have been reasonable to pause. To wait. To regroup.
+  </p>
+  <p>
+    <strong>We did not pause.</strong>
+  </p>
+  <p>
+    Damilare stayed in the field. Moyosoreoluwa stayed at the keyboard. In 30 days:
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">131</div>
+      <div class="stat-lbl">Commits · 30 days</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">76</div>
+      <div class="stat-lbl">Farmers migrated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15</div>
+      <div class="stat-lbl">Features shipped</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">107</div>
+      <div class="stat-lbl">Tests automated</div>
+    </div>
+  </div>
+
+  <p>
+    Two people. One platform. Three environments deployed. Zero growers lost. Still flying.
+  </p>
+</section>
+
+<!-- THE FOUNDERS -->
+<section>
+  <div class="section-kicker">The People</div>
+  <h2>Two founders.<br><span class="green">Load-bearing.</span></h2>
+
+  <div class="profiles">
+    <div class="profile">
+      <div class="profile-initial">D</div>
+      <div class="profile-name">Damilare Odumosu</div>
+      <div class="profile-title">Founder &amp; CEO</div>
+      <p class="profile-bio">
+        Third-generation farmer. Masters in Entrepreneurship, UNB. Grew up watching good farmers lose good seasons — not from carelessness, but from blindness. Built CropMind to close the gap between what a large operation can know and what a family farm can know. The field is his laboratory.
+      </p>
+    </div>
+    <div class="profile">
+      <div class="profile-initial">M</div>
+      <div class="profile-name">Moyosoreoluwa</div>
+      <div class="profile-title">Chief Solution Engineer</div>
+      <p class="profile-bio">
+        Built and maintains the CropMind platform end-to-end — billing, analytics, auth migration, onboarding, CI/CD across three environments. When the team contracted to two, she shipped more in 30 days than most teams do in a quarter. The platform runs on her code. Her contribution is not a footnote. It is load-bearing.
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top: 32px;">
+    The Wright Brothers had each other. Orville flew. Wilbur ran the calculations, built the wind tunnel, fixed the engine. Neither could have done it without the other. This is that story.
+  </p>
+</section>
+
+<!-- DAMILARE'S MISSION -->
+<section>
+  <div class="section-kicker">Damilare's Mission</div>
+  <h2>Good farmers should not<br>lose good <span class="green">seasons.</span></h2>
+  <p>
+    I grew up watching good farmers lose good seasons — not because they were lazy, not because they were careless, but because they were <em>blind</em>. A storm came in early and they didn't know to move up harvest. A disease window opened on a Tuesday and they didn't scout until Friday. A yield estimate was off by 30 percent and they were locked into a contract they couldn't fill.
+  </p>
+  <p>
+    The intelligence existed. The signals were there — in the canopy, in the soil moisture, in the satellite image, in the berry clusters. But nothing connected those signals to a decision in time.
+  </p>
+  <p>
+    I built CropMind because I watched that gap destroy seasons. Because I am a farmer's son and a farmer's grandson. Because the gap between what a large operation can afford to know and what a small family farm can afford to know is the difference between surviving and not.
+  </p>
+  <div class="pull">
+    <p>Not with more labor. Not with $15,000 sensors. With a phone. With a walk down the rows. With something that costs less than a bad harvest and tells you the truth.</p>
+  </div>
+</section>
+
+<!-- WHAT WE'RE BUILDING -->
+<section>
+  <div class="section-kicker">What We Are Actually Building</div>
+  <h2>The intelligence layer<br>for the <span class="green">land.</span></h2>
+  <p>
+    The Wright Brothers did not build a plane. They built the proof that the sky was no longer a limit. Sixty-six years after Kitty Hawk, we landed on the moon.
+  </p>
+  <p>
+    We are not building a yield estimation tool.
+  </p>
+  <p>
+    We are building the proof that every farmer — in the Okanagan, in Sonoma, in the Barossa Valley, in Marlborough, in Ontario, in places nobody has thought to put a precision agriculture company yet — can know what is happening in their field with the same clarity that a billion-dollar operation can.
+  </p>
+  <p>
+    Not just for grapes. For apples. For cannabis. For berries. For every specialty crop that feeds the world and gets no attention from the companies that built ag-tech for corn and soy. Australia. New Zealand. New crops. New seasons.
+  </p>
+  <div class="pull">
+    <p>The mission is not to be the biggest. The mission is to make the gap disappear.</p>
+  </div>
+  <p>
+    The gap between what a large operation can know and what a family farm can know.<br>
+    The gap between a disease spotted in time and a block lost.<br>
+    The gap between a yield estimate and a yield truth.<br>
+    The gap between a farmer guessing and a farmer deciding.
+  </p>
+
+  <div class="mission-block">
+    <div class="mission-line">We build precision intelligence for specialty farmers.</div>
+    <div class="mission-line">We exist because good farmers should not lose good seasons.</div>
+    <div class="mission-line green">Two people proved it could be done. Now we are proving it at scale.</div>
+  </div>
+</section>
+
+<!-- THE LONG ARC -->
+<div class="arc-section">
+  <div class="arc-year">1903</div>
+  <div class="arc-event">Kitty Hawk · 12 seconds · First flight</div>
+  <div class="arc-divider"></div>
+  <div class="arc-year">1969</div>
+  <div class="arc-event">The Moon · 66 years later</div>
+  <div class="arc-divider"></div>
+  <div class="arc-closing">
+    We are at<br><span class="green">Kitty Hawk.</span>
+  </div>
+  <p class="arc-sub" style="margin-top: 24px; font-size: 18px; color: rgba(255,255,255,0.45);">
+    The sky is not the limit.<br>The field is the beginning.
+  </p>
+</div>
+
+<footer>
+  <div class="footer-logo">CropMind</div>
+  <div class="footer-links">
+    <a href="https://cropmind.ca/deck">Pitch Deck</a>
+    <a href="https://cropmind.ca">Platform</a>
+    <a href="mailto:dodumosu@cropmind.ca">dodumosu@cropmind.ca</a>
+    <a href="https://www.linkedin.com/company/cropmind/">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
