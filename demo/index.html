@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CropMind — See it in the field</title>
+<meta name="description" content="Two short films: how a grower uses CropMind, and what it does — from a phone or drone video of a vineyard to per-row yield, disease maps, and harvest timing.">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg0:#060e09; --bg1:#0d1f12; --bg2:#172b1c;
+    --green:#77bf59; --green-soft:#a6d98f;
+    --ink:#eef3ea; --muted:rgba(238,243,234,.62); --line:rgba(119,191,89,.22);
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  body{
+    font-family:var(--sans); color:var(--ink); line-height:1.6;
+    background:radial-gradient(1200px 600px at 50% -10%, #16351f 0%, transparent 60%), linear-gradient(160deg,var(--bg0) 0%,var(--bg1) 55%,var(--bg2) 100%);
+    background-attachment:fixed; min-height:100vh; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px;}
+
+  header{padding:64px 0 8px; text-align:center;}
+  .brand{display:inline-flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.01em; font-size:16px; color:var(--ink);}
+  .mark{width:24px; height:24px; border-radius:50%; background:radial-gradient(circle at 34% 30%, #9ade7d, #3f8a3f 70%); box-shadow:inset 0 0 0 1px rgba(255,255,255,.25), 0 0 18px rgba(119,191,89,.35);}
+  .eyebrow{margin-top:34px; font-size:12px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:var(--green);}
+  h1{margin:14px 0 0; font-size:clamp(34px,6vw,58px); font-weight:900; letter-spacing:-1.5px; line-height:1.03; text-wrap:balance;}
+  h1 .accent{color:var(--green);}
+  .lede{margin:18px auto 0; max-width:60ch; font-size:clamp(15px,2.2vw,18px); color:var(--muted);}
+
+  .films{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin:52px 0 0;}
+  .film{background:rgba(255,255,255,.02); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 30px 60px -40px rgba(0,0,0,.8);}
+  .film-media{position:relative; background:#040a06; aspect-ratio:16/9;}
+  .film-media video{display:block; width:100%; height:100%; object-fit:cover; background:#040a06;}
+  .film-body{padding:18px 20px 22px;}
+  .tag{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--green); background:rgba(119,191,89,.12); border:1px solid var(--line); padding:3px 10px; border-radius:999px;}
+  .film h2{margin:12px 0 6px; font-size:20px; font-weight:800; letter-spacing:-.3px;}
+  .film p{font-size:14px; color:var(--muted); max-width:44ch;}
+
+  .strip{margin:44px 0 0; padding:22px 24px; border:1px solid var(--line); border-radius:14px; background:rgba(119,191,89,.05); text-align:center;}
+  .strip p{font-size:15px; color:var(--ink);}
+  .strip b{color:var(--green-soft);}
+
+  footer{margin:40px 0 64px; padding-top:22px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; justify-content:center; font-size:13px; color:var(--muted);}
+  footer a{color:var(--green-soft); text-decoration:none; font-weight:600;}
+  footer a:hover{text-decoration:underline;}
+  footer a:focus-visible{outline:2px solid var(--green); outline-offset:3px; border-radius:3px;}
+  .dot{color:var(--line);}
+
+  @media (max-width:720px){
+    .films{grid-template-columns:1fr; gap:22px;}
+    header{padding-top:48px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand"><span class="mark" aria-hidden="true"></span> CropMind</div>
+    <p class="eyebrow">See it in the field</p>
+    <h1>From a field video to a <span class="accent">decision.</span></h1>
+    <p class="lede">Point a phone or a drone down a row. CropMind returns per-row yield estimates, disease maps, and a harvest-timing read for the block. Here are two short films — one for growers, one for the bigger picture.</p>
+  </header>
+
+  <section class="films">
+    <article class="film">
+      <div class="film-media">
+        <video controls preload="metadata" playsinline>
+          <source src="CropMind-grower-demo.mp4" type="video/mp4">
+          Your browser can&rsquo;t play this video — <a href="CropMind-grower-demo.mp4">download it here</a>.
+        </video>
+      </div>
+      <div class="film-body">
+        <span class="tag">Grower demo · ~90s</span>
+        <h2>How a grower uses it</h2>
+        <p>Raw field video in, a per-row read out — yield, disease, and when to pick.</p>
+      </div>
+    </article>
+
+    <article class="film">
+      <div class="film-media">
+        <video controls preload="metadata" playsinline>
+          <source src="CropMind-investor-demo.mp4" type="video/mp4">
+          Your browser can&rsquo;t play this video — <a href="CropMind-investor-demo.mp4">download it here</a>.
+        </video>
+      </div>
+      <div class="film-body">
+        <span class="tag">Investor cut · ~75s</span>
+        <h2>What CropMind is</h2>
+        <p>The short version of why field intelligence from video matters for growers.</p>
+      </div>
+    </article>
+  </section>
+
+  <div class="strip">
+    <p>Live today with paying vineyards in <b>British Columbia</b> and <b>California</b>.</p>
+  </div>
+
+  <footer>
+    <a href="../">Full pitch deck</a>
+    <span class="dot">·</span>
+    <a href="https://cropmind.ca">cropmind.ca</a>
+    <span class="dot">·</span>
+    <span>CropMind Inc.</span>
+  </footer>
+
+</div>
+</body>
+</html>
